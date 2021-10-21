@@ -18,8 +18,8 @@ return(OBS+sluggingPercent)
 end
 
 struct player
-	firstName
-	lastName
+	firstName::String
+	lastName::String
 	singles::Float64
 	doubles::Float64
 	triples::Float64
@@ -30,6 +30,8 @@ struct player
 	plateAppearances::Float64
 end
 
+data=[]
+
 print("Welcome to the player statistics calculator test program. I am going to\nread players from an input data file. You will tell me the name of\nyour input file. I will store all of the players in a list,\ncompute each players averages and then write teh resulting team report to\nthe screen.\n")
 
 print("Enter the name of your input file: ")
@@ -38,8 +40,23 @@ input=readline()
 
 open("C:/Users/Orames/Desktop/"*input) do file
     for ln in eachline(file)
-        println("$(ln)")
+     #=   println("$(ln)")  =#
+	push!(data,split(ln," "))
     end
-end
 
 println("BASEBALL TEAM REPORT --- ",countlines("C:/Users/Orames/Desktop/"*input)," PLAYERS FOUND IN FILE")
+
+#= println(data[5][1]) =#
+println(data)
+
+for i in 1:countlines("C:/Users/Orames/Desktop/"*input)
+for j in 1:length(data[i])
+temp=data[i][j]
+if(temp!="")
+print(data[i][j]*"\n")
+end
+end
+end
+
+
+end
