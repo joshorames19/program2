@@ -18,10 +18,13 @@ return(OBS+sluggingPercent)
 end
 
 struct player
+	firstName
+	lastName
 	singles::Float64
 	doubles::Float64
 	triples::Float64
 	atBats::Float64
+	homeRuns::Float64
 	walks::Float64
 	hitByPitch::Float64
 	plateAppearances::Float64
