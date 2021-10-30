@@ -125,11 +125,60 @@ end
 #Print player data
 #------------------------------------------------------------------------------------------------------
 
+@printf("\n")
 println("    Player Name  :    Average  Slugging Onbase%  OPS     \n----------------------------------------------------------")
-
 for j in 1:countlines("C:/Users/Orames/Desktop/"*input)
 @printf("%7s, %7s : %8.3f %8.3f %8.3f %8.3f\n",ArrayofStructs[j].lastName,ArrayofStructs[j].firstName,battingAvg(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].atBats),sluggingPercent(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].atBats),OBS(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].walks,ArrayofStructs[j].hitByPitch,ArrayofStructs[j].plateAppearances),OPS(OBS(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].walks,ArrayofStructs[j].hitByPitch,ArrayofStructs[j].plateAppearances),sluggingPercent(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].atBats)))
 end
+
+#Loop to swap OPS if higher
+
+for i in 1:countlines("C:/Users/Orames/Desktop/"*input)
+minInd=i
+for j in 1:countlines("C:/Users/Orames/Desktop/"*input)
+if(OPS(OBS(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].walks,ArrayofStructs[j].hitByPitch,ArrayofStructs[j].plateAppearances),sluggingPercent(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].atBats))<OPS(OBS(ArrayofStructs[minInd].singles,ArrayofStructs[minInd].doubles,ArrayofStructs[minInd].triples,ArrayofStructs[minInd].homeRuns,ArrayofStructs[minInd].walks,ArrayofStructs[minInd].hitByPitch,ArrayofStructs[minInd].plateAppearances),sluggingPercent(ArrayofStructs[minInd].singles,ArrayofStructs[minInd].doubles,ArrayofStructs[minInd].triples,ArrayofStructs[minInd].homeRuns,ArrayofStructs[minInd].atBats)))
+minInd=j
+temp=ArrayofStructs[minInd]
+ArrayofStructs[minInd]=ArrayofStructs[i]
+ArrayofStructs[i]=temp
+end
+end
+end
+
+#Print by highest OPS
+
+@printf("\n")
+@printf("DESCENDING OPS \n")
+println("    Player Name  :    Average  Slugging Onbase%  OPS     \n----------------------------------------------------------")
+for j in 1:countlines("C:/Users/Orames/Desktop/"*input)
+@printf("%7s, %7s : %8.3f %8.3f %8.3f %8.3f\n",ArrayofStructs[j].lastName,ArrayofStructs[j].firstName,battingAvg(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].atBats),sluggingPercent(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].atBats),OBS(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].walks,ArrayofStructs[j].hitByPitch,ArrayofStructs[j].plateAppearances),OPS(OBS(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].walks,ArrayofStructs[j].hitByPitch,ArrayofStructs[j].plateAppearances),sluggingPercent(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].atBats)))
+end
+
+#Loop to swap batting average if higher
+
+for i in 1:countlines("C:/Users/Orames/Desktop/"*input)
+minInd=i
+for j in 1:countlines("C:/Users/Orames/Desktop/"*input)
+if(battingAvg(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].atBats)<battingAvg(ArrayofStructs[minInd].singles,ArrayofStructs[minInd].doubles,ArrayofStructs[minInd].triples,ArrayofStructs[minInd].homeRuns,ArrayofStructs[minInd].atBats))
+minInd=j
+temp=ArrayofStructs[minInd]
+ArrayofStructs[minInd]=ArrayofStructs[i]
+ArrayofStructs[i]=temp
+end
+end
+end
+
+#Print by highest batting average
+
+@printf("\n")
+@printf("DESCENDING BATTING AVERAGE \n")
+println("    Player Name  :    Average  Slugging Onbase%  OPS     \n----------------------------------------------------------")
+for j in 1:countlines("C:/Users/Orames/Desktop/"*input)
+@printf("%7s, %7s : %8.3f %8.3f %8.3f %8.3f\n",ArrayofStructs[j].lastName,ArrayofStructs[j].firstName,battingAvg(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].atBats),sluggingPercent(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].atBats),OBS(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].walks,ArrayofStructs[j].hitByPitch,ArrayofStructs[j].plateAppearances),OPS(OBS(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].walks,ArrayofStructs[j].hitByPitch,ArrayofStructs[j].plateAppearances),sluggingPercent(ArrayofStructs[j].singles,ArrayofStructs[j].doubles,ArrayofStructs[j].triples,ArrayofStructs[j].homeRuns,ArrayofStructs[j].atBats)))
+end
+
+
+
 
 
 end
